@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <title>
+            Music Stream | Playing...
+        </title>
+        <script src="static/streamer.js">
+        img=document.getElementsByTagName('img')
+        img.addEventListener('mouseover', function() {
+    console.log('hovered')
+});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/audiojs/1.0.1/audio.min.js" integrity="sha512-n1UxE3D0oAro7q72ZVxyGIUqB3DBt+cYVNujO4yFXm74LVPkzUUgPyP5UGEkDEDAMGLNkDo4BnIMrE/M8b5lCw==" crossorigin="anonymous"></script>
+        <style>
+            .audiojs{
+                background-color: #000000;
+                color: #000000;
+            }
+            .cont{
+                border-radius: 50px;
+                background: #e0e0e0;
+                box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+            }
+            .navbak{
+                background: rgba( 255, 255, 255, 0.30 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 12.0px );
+-webkit-backdrop-filter: blur( 12.0px );
+border-radius: 10px;
+min-width: 50px;
+float:left;
+bottom: 0%;
+            }
+            .bold-text{
+                font-weight:900;
+                border-radius: 10px;
+                text-emphasis: underline;
+                text-decoration: dashed;
+                font-family: 'Source Sans Pro', sans-serif;
+                align-self:flex-end;
+                align-items: flex-end;
+                align-content: stretch;
+                text-align: center;
+            }
+            img{
+                border-radius: 50px;
+background: #8f0a0a;
+box-shadow: inset 20px 20px 60px #8c0a0a,
+            inset -20px -20px 60px #920a0a;
+            }
+            img:hover{
+                border-radius: 50px;
+background: #000000;
+box-shadow:  20px 20px 60px #000000,
+             -20px -20px 60px #000000;
+             filter: blur(0.5px);
+  -webkit-filter: blur(0.5px);
+}
+body{
+    width: auto;
+}
+
+        </style>
+        
+    </head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    
+    {{xcon| safe}}
+    <body style='display:inline-flex;background-image: radial-gradient(violet,);'>
+        {% include "subtemplate.html" %}
+{% if user.is_authenticated %}
+    <b class='col-sm'><h1></h1></b>
+{% else %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+    <p>Welcome, new MusicStreamer. Please <a href='/'></a>log in.</p>
+{% endif %}
+<div class="flex-up" style='display:flex;'>
+{{water|safe}}
+{{populate|safe}}
+Created in Covid-19 Era
+<script>
+    audiojs.events.ready(function() {
+      var as = audiojs.createAll();
+    });
+    window.addEventListener("scroll", (event) => {
+    let scroll = this.scrollY;
+    console.log(scroll)
+    var x = document.body.scrollLeft;
+  var y = document.body.scrollTop;
+  console.log(x,y)
+  function play(){
+      console.log(this)
+    player.play()
+  }
+});
+  </script>
+    <object width="600" height="400">
+        <embed  width="600" height="400">
+
+    {% include "player.html" %}
+</embed>:
+</object>
+<audio src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3" preload="auto" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js" integrity="sha512-L6Z/YtIPQ7eU3BProP34WGU5yIRk7tNHk7vaC2dB1Vy1atz6wl9mCkTPPZ2Rn1qPr+vY2mZ9odZLdGYuaBk7dQ==" crossorigin="anonymous"></script>
+<script>var sound = new Howl({
+    src: ['https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3']
+  });
+  var player = new Player([
+  {
+    title: 'Rave Digger',
+    file: 'rave_digger',
+    howl: null
+  },
+  {
+    title: '80s Vibe',
+    file: '80s_vibe',
+    howl: null
+  },
+  {
+    title: 'Running Out',
+    file: 'running_out',
+    howl: null
+  }
+]);
+var currentstate;
+  const id=0;
+  function playthis(e){
+    console.log(e.target.id)
+    function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+if (audioElement.paused){
+term=document.getElementById('text'+e.target.id).innerText
+term.replace(' ','+');
+res=httpGet('https://itunes.apple.com/search?term='+term+'&limit=1');
+x=JSON.parse(res)
+thumb=x['results'][0]['artworkUrl100']
+artst=x['results'][0]['artistName']
+sng=x['results'][0]['trackName']
+thumb.replace('100x100','800x800')
+ret=httpGet('/contaddr/?query='+encodeURI(document.getElementById('text'+e.target.id).innerText))
+console.log(ret)
+    sngsrc='//vednig.heliohost.us/content/?query='+encodeURI(ret)
+    sngauthor=artst
+    sngimg=thumb
+    sngname=sng
+    //sngsrc='https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    document.getElementsByClassName('active-song')[0].innerHTML='<div class="player__albumImg active-song" data-author="'+sngauthor+'" data-song="'+sngname+'" data data-src="'+sngsrc+'" style="background-image: url('+sngimg+')"></div> '
+    audioElement.src=sngsrc;
+    audioElement.autoplay=true;
+    document.getElementsByClassName('player__author')[0].innerText=sngauthor
+    document.getElementsByClassName('player__song')[0].innerText=sngname
+    document.getElementById('playnow').click()
+  }else{
+    term=document.getElementById('text'+e.target.id).innerText
+term.replace(' ','+');
+res=httpGet('https://itunes.apple.com/search?term='+term+'&limit=1');
+x=JSON.parse(res)
+thumb=x['results'][0]['artworkUrl100']
+artst=x['results'][0]['artistName']
+sng=x['results'][0]['trackName']
+thumb.replace('100x100','800x800')
+ret=httpGet('/contaddr/?query='+encodeURI(document.getElementById('text'+e.target.id).innerText))
+console.log(ret)
+    sngsrc='//vednig.heliohost.us/content/?query='+encodeURI(ret)
+    sngauthor=artst
+    sngimg=thumb
+    sngname=sng
+    //sngsrc='https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    document.getElementsByClassName('active-song')[0].innerHTML='<div class="player__albumImg active-song" data-author="'+sngauthor+'" data-song="'+sngname+'" data data-src="'+sngsrc+'" style="background-image: url('+sngimg+')"></div> '
+    audioElement.src=sngsrc;
+    audioElement.autoplay=true;
+    audioElement.play()
+    document.getElementsByClassName('player__author')[0].innerText=sngauthor
+    document.getElementsByClassName('player__song')[0].innerText=sngname
+  }
+}
+  function addthis(x){
+    sound.src.push(x)
+    sngauthor=
+    sngimg=
+    sngname=
+    sngsrc=
+    document.getElementById('appnd').innerHTML+='<div class="player__albumImg" data-author="'+sngauthor+'" data-song="'+sngname+'" data data-src="'+sngsrc+'" style="background-image: url('+sngimg+'"></div> '
+  }
+  
+  //document.addEventListener('click',playthis())
+  </script>
+  <script>
+    function download(e){
+      window.open(audioElement.src)
+    }
+  </Script>
+</div>
+</body>
+    
+</html>

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "..\\static"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\drop"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "templates"
+	}
+}

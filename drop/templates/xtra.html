@@ -1,0 +1,35 @@
+<body>
+    {% block title %}{{ section.title }} Not seen{% endblock %}
+{% block content %}
+<h1>{{ section.title }}</h1>
+<table>
+{% for story in story_list %}
+<h2>
+<a href="{{ story.get_absolute_url }}">
+{{ story.headline|upper }}
+</a>
+</h2>
+<p>{{ story.tease|truncatewords:"100" }}</p>
+{% endfor %}
+{% endblock %}
+<tr class="{{ rowcolors }}">{% include "subtemplate.html" %}</tr>
+{% for obj in some_list %}
+{% cycle 'row1' 'row2' as rowcolors silent %}
+<td class="{{ rowcolors }}">{% include "subtemplate.html" %}</tr>
+{% resetcycle %}
+{% endfor %}
+{% cycle 'row1' 'row2' %}
+{{ rowcolors }}
+{% resetcycle %}
+</table><table>
+<tr>
+<td class="{% cycle 'row1' 'row2' as rowcolors %}">...</td>
+<td class="{{ rowcolors }}">...</td>
+</tr>
+<tr>
+<td class="{% cycle rowcolors %}">...</td>
+<td class="{{ rowcolors }}">...</td>
+</tr>
+{% resetcycle %}
+</table>
+</body>
